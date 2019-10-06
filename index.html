@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>스마트한 쇼핑검색, 다나와! : 가격비교</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="./js/jquery-3.4.1.min.js"></script>
+
+	<style>
+	/* 	<!-- Header - 캐러셀  시작 --> */
+	/* Remove the navbar's default margin-bottom and rounded borders */
+	.header {
+		padding: 30px;
+		text-align: center;
+	}
+	
+	.header h3:before{
+		content: ' \26CF'; 
+	}	
+	
+	.header h3:after{
+		content: ' \26CF'; 
+	}
+	
+	.navbar {
+		margin-bottom: 0;
+		border-radius: 0;
+	}
+	
+	.carousel-inner {
+		background-color: none;
+		margin-bottom: 50px
+	}
+	
+	.carousel-inner img {
+		width: 100%; /* Set width to 100% */
+		margin: auto;
+		max-height: 500px;
+		height:300px;
+	}
+	
+	/* Hide the carousel text when the screen is less than 600 pixels wide */
+	@media ( max-width : 600px) {
+		.carousel-caption {
+			display: none;
+		}
+	}
+	
+	/* 	<!-- Header - 캐러셀  끝 --> */
+	</style>
+	
+	<style type="text/css">
+	/* 	<!-- 브랜드 컬럼 3개 & Tap 시작  --> */
+	
+	
+	.thumbnail img { min-height:200px; height:300px; width : 100%; max-width: 100%}
+	
+	.ImagesCategory {
+		width : 100%;
+		height: 300px;
+		margin-top: 10px"
+	}
+	.text-danger:before{
+		content: ' \263A';
+	}	
+	
+	.text-danger:after{
+		content: ' \2714'; 
+	}
+	
+	.prod_tit {
+	display:block;
+	height:15px;
+	font-size:12px;
+	color:#333;
+	margin:11px 5px 6px 5px;
+	}
+	.prod_price {
+	display:block;
+	color:#111;
+	position:relative;
+	text-align: center;
+	margin:11px 5px 6px 5px;
+	}
+	
+	.tabmenu{
+	border: 1px solid #E2E2E2;
+	}
+	/* <!-- 브랜드 컬럼 3개 & Tap 끝  --> */
+	
+	/* <!-- iframe youtube 시작  --> */
+	.text {
+	position: absolute;
+	bottom: 0;
+	background: rgb(0, 0, 0); /* Fallback color */
+	background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+	color: #f1f1f1;
+	width: 100%;
+	padding: 20px;
+	text-align: center;
+	}
+	
+	
+	
+	/* <!-- iframe youtube 끝  --> */
+	
+	/* 	<!--  footer 시작 -->	 */
+	ul, li {argin:0px; padding:0px;list-style:none;vertical-align: top;}
+	.web .onM {display:none !important}
+	.footer-lge {border-top:1px solid #3f3f40;background-color:#333; margin-top: 100px;}
+	.footer-lge > .inner {position:relative;max-width:1400px;padding:0;margin:0 auto;padding-bottom:26px;color:#fff}
+	.footer-lge .shortcut {font-weight:200}
+	.footer-lge .shortcut > li:before {margin:0 12px;font-size:13px;line-height:1em;vertical-align:middle}
+	.footer-lge .shortcut > li:nth-child(1) {font-weight:bold}
+	.footer-lge .shortcut > li:nth-child(2) {font-weight:bold}
+	.footer-lge .shortcut a {font-size:13px;color:#fff;line-height:1em;vertical-align:middle}
+	.footer-lge .info {font-size:13px;color:#fff;line-height:20px}
+	.footer-lge .info > strong {font-weight:lighter}
+	.footer-lge .copynotice {display:block;float:right;margin-top:30px}       
+	.footer-lge .copyright {display:block;margin-top:10px;/*position:absolute;top:3px;right:0;font-size:13px;*/}
+	.footer-lge .notice {position:absolute;right:30px;bottom:45px;text-align:right}
+	.footer-lge .notice small {display:block;margin-bottom:10px;font-size:12px;line-height:46px}        
+	.footer-lge .notice strong {font-size:13px}       
+
+	/*array*/
+	 .array {overflow:hidden;margin:14px 0}     
+	 .array > li {float:left;/*font-size:18px;*/}      
+	 .array.f13 > li {font-size:13px}     
+	 .array > li:after {content:'|';margin:0 8px}
+	 .array > li:last-child:after {display:none}
+   
+	/* 	<!--  footer 끝 -->	 */
+	</style>
+	<!-- 브랜드 컬럼 3개 & Tap 끝  -->
+	
+	<script type="text/javascript">
+	<!-- 카테고리  마우스오버 이벤트 시작  -->
+	
+	$(document).ready(function() {
+		
+		$('.nav-tabs > li > a').hover(function() {
+			  $(this).tab('show');
+			});
+		
+	});
+	<!-- 카테고리  마우스오버 이벤트 끝  -->
+	</script>
+
+</head>
+<body>
+	<div class="header">
+		<h1 style="font-size: 50px"><strong>다나와</strong></h1>
+		<h3>비교하고 잘 사는 다나와.</h3>
+	</div>
+	<!--  네비게이션 바 시작  -->
+	<nav class="navbar navbar-expand-md navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">다나와</a>
+				<!-- 네비바 링크 첫번쨰 -->
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<!-- 네비바 링크 두번쨰 -->
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+					<!-- 네비바 링크 셋번쨰(드롭다운) -->
+					<ul class="dropdown-menu">
+						<li><a href="#">Page 1-1</a></li>
+						<!-- 네비바 링크 셋번쨰(드롭다운 링크1) -->
+						<li><a href="#">Page 1-2</a></li>
+						<!-- 네비바 링크 셋번쨰(드롭다운 링크1) -->
+						<li><a href="#">Page 1-3</a></li>
+						<!-- 네비바 링크 셋번쨰(드롭다운 링크1) -->
+					</ul></li>
+				<li><a href="#">Page 2</a></li>
+				<!-- 네비바 링크 네번쨰-->
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+						Sign Up</a></li>
+				<!-- 회원가입 링크-->
+				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+						Login</a></li>
+				<!-- 로그인 링크-->
+			</ul>
+		</div>
+	</nav>
+	<!--  네비게이션 바 끝 -->
+
+	<!--  캐러셀(carousel) 시작 -->
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+		</ol>
+
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<img src="./images/carousel_img01.jpeg" alt="Image">
+				<div class="carousel-caption"></div>
+			</div>
+			<div class="item">
+				<img src="./images/carousel_img02.jpg" alt="Image">
+				<div class="carousel-caption"></div>
+			</div>
+			<div class="item">
+				<img src="./images/carousel_img03.png" alt="Image">
+				<div class="carousel-caption"></div>
+			</div>			
+		</div>
+
+		<!-- Left and right controls -->
+		<a class="left carousel-control" href="#myCarousel" role="button"
+			data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"
+			aria-hidden="true"></span> <span class="sr-only">Previous</span>
+		</a> <a class="right carousel-control" href="#myCarousel" role="button"
+			data-slide="next"> <span
+			class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+	<!--  캐러셀(carousel) 끝 -->
+
+	<!--  Row(Column 3개 ) 브랜드 laptop 시작 -->
+		<div class="container-fluid" style="padding-left: 0; padding-right: 0; margin-right: 130px; margin-left: 135px">
+			<div class="row">
+			  <div class="col-md-4">
+			    <div class="thumbnail">
+			      <img src="./images/Lenovo/LenovoLaptopMain_01.jpg" alt="imgs">
+			      <div class="caption" style="text-align: center;">
+					<a href="#"><strong style="font-size: 30px"><span style="color: black;">Lenovo</span><span style="color: black"> 노트북</span></strong></a>			      
+			      </div>
+			    </div>
+			  </div>
+			  <div class="col-md-4">
+			    <div class="thumbnail">
+			      <img src="./images/LG/LGlaptopmain_01.jpg" alt="imgs">
+			      <div class="caption" style="text-align: center;">
+			      	<a href="#"><strong style="font-size: 30px"><span style="color: red;">LG</span><span style="color: black"> 노트북</span></strong></a>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="col-md-4">
+			    <div class="thumbnail">
+			      <img src="./images/Samsung/SamsungLaptopMain_01.jpg" alt="imgs">
+			      <div class="caption" style="text-align: center;">
+			      	<a href="#"><strong style="font-size: 30px"><span style="color: blue;">Samsung</span><span style="color: black"> 노트북</span></strong></a>
+			      </div>
+			    </div>
+			  </div>    
+			</div>
+		</div>
+	<!--  Row(Column 3개 ) 브랜드 laptop 끝 -->
+	
+	<!--  노트북 카테고리 4개 시작 Taps기능 시작 -->
+	<h3 class="text-center" style="margin-bottom: 40px; margin-top: 50px">
+		<strong>
+		<span class="text-muted">삶을 사랑하는 당신을 위한</span>
+		<span class="text-danger">다나와의 맞춤 제안</span>
+		</strong>
+	</h3>
+	
+	<div class="container-fluid" style="padding-left: 0; padding-right: 0; margin-right: 150px; margin-left: 150px">
+	  <div class="row">
+	  <ul class="nav nav-tabs nav-justified" style="border:1px solid #E2E2E2;">
+	    <li class="active"><a data-toggle="tab" href="#home" style="border-radius: 0" class="tabmenu">게이밍 노트북</a></li>
+	   <li><a data-toggle="tab" href="#menu1" class="tabmenu">초경량 노트북</a></li>
+	   <li><a data-toggle="tab" href="#menu2" class="tabmenu">비즈니스 노트북</a></li>
+	   <li><a data-toggle="tab" href="#menu3" class="tabmenu">디자인용 노트북</a></li>
+	 </ul>
+	 </div>
+	 
+	<div class="tab-content">
+	  <div id="home" class="tab-pane fade in active">
+	    <div class="row" style="border: 1px solid #E2E2E2; padding-top: 30px">
+	  	 <div class="col-md-3" > <img class="ImagesCategory" src="./images/01_GamingLaptop/01_ASUS_ROG_Strix_G_G731GU-EV005.jpg" alt="imgs">
+	  	 <span style="text-align: center" class="prod_tit">파격적인 게이밍 디자인</span>
+	  	 <span class="prod_price"  style="text-align: center"><strong class="pr_num">1,420,000</strong>원</span>
+	  	 </div>
+	  	 <div class="col-md-3" > <img class="ImagesCategory" src="./images/01_GamingLaptop/02_LEGION_Y530-15ICH_i5_Special.jpg" alt="imgs">
+	  	  <span style="text-align: center" class="prod_tit">레노버 대표 게이밍 시리즈</span>
+	  	  <span class="prod_price"><strong class="pr_num">1,367,000</strong>원</span>
+	  	 </div>
+	  	 <div class="col-md-3" > <img class="ImagesCategory" src="./images/01_GamingLaptop/03_LGElectronic_UltraGear_GT_15U780-PA5MK.jpg" alt="imgs">
+	  	  <span style="text-align: center" class="prod_tit">LG전자 울트라기어 GT</span>
+	  	  <span class="prod_price"><strong class="pr_num">998,000</strong>원</span>
+	  	 </div>
+	  	 <div class="col-md-3" > <img class="ImagesCategory" src="./images/01_GamingLaptop/04_MSI_GLseries_GL65_9SD.jpg" alt="imgs">
+	  	  <span style="text-align: center" class="prod_tit">MSI GL시리즈 GL65</span>
+	  	  <span class="prod_price"><strong class="pr_num">1,299,000</strong>원</span>
+	  	 </div>
+	   </div>
+	 </div>
+	 <div id="menu1" class="tab-pane fade">
+	   <div class="row" style="border: 1px solid #E2E2E2; padding-top: 30px">
+	  	 <div class="col-md-3" > <img class="ImagesCategory" src="./images/02_UltralightLaptop/01_LGElectronic_2019_gram_14ZD990-GX50K.jpg" alt="imgs">
+	  	 <span style="text-align: center" class="prod_tit">LG전자 2019 그램</span>
+	  	 <span class="prod_price"  style="text-align: center"><strong class="pr_num">1,156,000</strong>원</span>
+	  	 </div>
+	  	 <div class="col-md-3" > <img class="ImagesCategory" src="./images/02_UltralightLaptop/02_LGElectronic_2019_gram_17Z990-VA5IK.jpg" alt="imgs">
+	  	 <span style="text-align: center" class="prod_tit">LG전자 2019 그램</span>
+	  	 <span class="prod_price"  style="text-align: center"><strong class="pr_num">1,259,000</strong>원</span>
+	  	 </div>
+	  	 <div class="col-md-3" > <img class="ImagesCategory" src="./images/02_UltralightLaptop/03_Samsung_2019_Always_NT950XBV-A58A_WIN10.jpg" alt="imgs">
+	  	 <span style="text-align: center" class="prod_tit">삼성전자2019 노트북9</span>
+	  	 <span class="prod_price"  style="text-align: center"><strong class="pr_num">1,169,000</strong>원</span>
+	  	 </div>
+	  	 <div class="col-md-3" > <img class="ImagesCategory" src="./images/02_UltralightLaptop/04_HansungComputer_UnderCage_TFX245.jpg" alt="imgs">
+	  	 <span style="text-align: center" class="prod_tit">한성컴퓨터 언터케이지</span>
+	  	 <span class="prod_price"  style="text-align: center"><strong class="pr_num">795,000</strong>원</span>
+	  	 </div>
+	   </div>
+	 </div>
+	 <div id="menu2" class="tab-pane fade">
+	   <div class="row" style="border: 1px solid #E2E2E2; padding-top: 30px">
+	  	 <div class="col-md-3" > <img class="ImagesCategory" src="./images/03_BusinessLaptop/01_ACER_Swift5_SF515-51T_i5_SMART.jpg" alt="imgs">
+	  	 <span style="text-align: center" class="prod_tit">광시야각 노트북</span>
+	  	 <span class="prod_price"  style="text-align: center"><strong class="pr_num">900,000</strong>원</span>
+	  	 </div>
+	  	 <div class="col-md-3" > <img class="ImagesCategory" src="./images/03_BusinessLaptop/02_ASUS_ViboBook_15_R564DA-BQ774.jpg" alt="imgs">
+	  	 <span style="text-align: center" class="prod_tit">ASUS 비보북</span>
+	  	 <span class="prod_price"  style="text-align: center"><strong class="pr_num">577,000</strong>원</span>
+	  	 </div>
+	  	 <div class="col-md-3" > <img class="ImagesCategory" src="./images/03_BusinessLaptop/03_LG_2019_gram_14ZD990-GX50K.jpg" alt="imgs">
+	  	 <span style="text-align: center" class="prod_tit">LG전자 2019 그램</span>
+	  	 <span class="prod_price"  style="text-align: center"><strong class="pr_num">1,156,000</strong>원</span>
+	  	 </div>
+	  	 <div class="col-md-3" > <img class="ImagesCategory" src="./images/03_BusinessLaptop/04_samsung_2019_Pen_S_NT930SBE-K38A.jpg" alt="imgs">
+	  	 <span style="text-align: center" class="prod_tit">삼성전자 2019 노트북 Pen</span>
+	  	 <span class="prod_price"  style="text-align: center"><strong class="pr_num">1,637,000</strong>원</span>
+	  	 </div>
+	   </div>
+	 </div>
+	 <div id="menu3" class="tab-pane fade">
+	   <div class="row" style="border: 1px solid #E2E2E2; padding-top: 30px">
+	  	 <div class="col-md-3" > <img class="ImagesCategory" src="./images/04_DesignLaptop/01_APPLE_mac_2019_MV912KHA.jpg" alt="imgs">
+	  	 <span style="text-align: center" class="prod_tit">APPLE 맥북프로 2019년형</span>
+	  	 <span class="prod_price"  style="text-align: center"><strong class="pr_num">2,369,000</strong>원</span>
+	  	 </div>
+	  	 <div class="col-md-3" > <img class="ImagesCategory" src="./images/04_DesignLaptop/02_DELL_ins_15_7590_D001I759003KR.jpg" alt="imgs">
+	  	 <span style="text-align: center" class="prod_tit">DELL 인스피론</span>
+	  	 <span class="prod_price"  style="text-align: center"><strong class="pr_num">1,699,000</strong>원</span>
+	  	 </div>
+	  	 <div class="col-md-3" > <img class="ImagesCategory" src="./images/04_DesignLaptop/03_LG_utra_17U790-PA76K.jpg" alt="imgs">
+	  	 <span style="text-align: center" class="prod_tit">LG전자 울트라기어</span>
+	  	 <span class="prod_price"  style="text-align: center"><strong class="pr_num">1,816,000</strong>원</span>
+	  	 </div>
+	  	 <div class="col-md-3" > <img class="ImagesCategory" src="./images/04_DesignLaptop/04_HansungComputer_AllDayLong_TFX255.jpg" alt="imgs">
+	  	 <span style="text-align: center" class="prod_tit">한성컴퓨터 올데이롱</span>
+	  	 <span class="prod_price"  style="text-align: center"><strong class="pr_num">846,000</strong>원</span>
+	  	 </div>
+	  	 </div>
+	    </div>
+	  </div>
+	</div>
+	<!--  노트북 카테고리 4개 시작 Taps기능 끝 -->
+	
+	<!-- iframe youtube 시작  -->
+	<h3 class="text-center" style="margin-bottom: 40px; margin-top: 100px">
+		<strong>
+		<span class="text-muted">브랜드 노트북</span>
+		<span class="text-danger">다양한 광고를</span>
+		<span class="text-muted">만나보세요</span>
+	</strong>
+	</h3>
+	
+	<div class="container" style="margin-top: 60px; padding-left: 0; padding-right: 0">	
+		<div class="row">
+		   <div class="col-md-4">
+		    <div class="embed-responsive embed-responsive-16by9">
+		      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tQKd0xHPN6U"></iframe>
+		      <span class="text">LG 그램 노트북 광고</span>
+		    </div>
+		  </div>
+		
+		  <div class="col-md-4">
+		    <div class="embed-responsive embed-responsive-16by9 hoverable">
+		      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/x-FM1oV1GUg"></iframe>
+		      <span class="text">삼성 노트북 Pen S 광고</span>
+		    </div>
+		  </div>
+		
+		  <div class="col-md-4">
+		    <div class="embed-responsive embed-responsive-16by9 hoverable">
+		      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/hs1HoLs4SD0"></iframe>
+		 		 <span class="text">new MacBook Air</span>
+			</div>    
+		  </div>
+		</div>
+	</div>	
+	<!-- iframe youtube 끝  -->
+	
+	<!--  footer 시작 -->
+	<section class="footer-lge">
+	<div class="inner">
+		<ul class="array shortcut">
+			<li><a href="#">회사소개</a></li>
+			<li><a href="#">개인정보처리방침</a></li>
+			<li><a href="#">이용약관</a></li>
+			<li><a href="#">이메일무단수집거부</a></li>
+			<li><a href="#">소식지 신청</a></li>
+			<li><a href="#">정도 경영 사이버 신문고</a></li>				
+		</ul>
+		 <p class="info">
+			대표이사: <strong>부릅뜨니숲이었어, 안졸리나졸려</strong>&nbsp;&nbsp;
+			사업자등록번호: <strong>000-00-0000</strong>
+			통신판매업신고번호: <strong>제0000-00000호</strong>
+			대표번호: <strong>02-1004-1004</strong><br/>
+			주소: <strong>이렇게 메인화면이 어렵다니 흑흑흑 </strong>
+			제품 및 서비스 문의 : <strong>7942-1004</strong><br class="onM">
+		<strong class="copynotice">본 프로젝트가 끝나고 금요일에 맛있는 회식을 하는것을 적극 권장합니다.</strong>
+		<span class="copyright">Copyright &copy; 2019 12조 다나와 컴퍼니. All Rights Reserved.</span>
+		</p>
+		<p class="notice onW">
+			<small class="pims">개인정보보호 관리체계 인증
+			<a href="https://isms.kisa.or.kr/main/pims/intro/" target="_blank"> <img src="./images/ico_footer_pims.gif" alt="개인정보보호 관리체계 인증"></a>
+			</small>
+		</p>		
+	</div>
+	</section>  
+	<!--  footer 끝 -->
+	
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
