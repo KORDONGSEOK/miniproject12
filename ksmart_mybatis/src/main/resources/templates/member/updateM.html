@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+
+<th:block layout:fragment="customTitle">
+	<title>수정화면</title>
+</th:block>
+<th:block layout:fragment="customContents">
+	<form th:action="@{/updateM}" method="post">
+		이이디 : <input type="text" name="memberId" th:value="${member.memberId}" readonly="readonly"><br>
+		비밀번호 : <input type="text" name="memberPw" th:value="${member.memberPw}"><br>
+		권한 : <input type="text" name="memberLevel" th:value="${member.memberLevel}"><br>
+		이름 : <input type="text" name="memberName" th:value="${member.memberName}"><br>
+		이메일 : <input type="text" name="memberEmail" th:value="${member.memberEmail}"><br>
+		<input type="submit" value="회원수정 버튼">
+	</form>
+</th:block>
+</html>

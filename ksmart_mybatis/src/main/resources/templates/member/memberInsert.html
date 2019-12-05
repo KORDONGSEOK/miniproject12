@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+
+<th:block layout:fragment="customTitle">
+	<title>회원가입</title>
+</th:block>
+<th:block layout:fragment="customContents">
+	<form method="post" th:action="@{/memberInsert}">
+		이이디 : <input type="text" name="memberId"><br>
+		비밀번호 : <input type="text" name="memberPw"><br>
+		권한 : <input type="text" name="memberLevel"><br>
+		이름 : <input type="text" name="memberName"><br>
+		이메일 : <input type="text" name="memberEmail"><br>
+		<input type="submit" value="회원가입 버튼">
+	</form>
+</th:block>
+</html>
